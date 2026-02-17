@@ -86,7 +86,7 @@ cp /path/to/claude-config/project-config/commands/*.md .claude/commands/
 | `/onboard` | Three-phase project onboarding workflow |
 | `/bug` | Diagnose bugs with root cause analysis |
 | `/task` | Analyze requirements and create implementation plan |
-| `/review` | Senior-level code review on staged changes |
+| `/review` | Senior-level code review (PR diff, staged changes, or specified files) |
 
 ## Configuration Details
 
