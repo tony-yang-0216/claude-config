@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Grep",
+      "LS",
+      "Bash(npm run test:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run build)"
+    ],
+    "deny": [
+      "Read(./.env*)",
+      "Read(./secrets/**)",
+      "Read(./**/credentials*)",
+      "Read(~/.ssh/**)",
+      "Bash(rm -rf /)",
+      "Bash(git config --global*)"
+    ],
+    "ask": [
+      "WebFetch",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(npm install *)",
+      "Bash(pip install *)",
+      "Bash(npm run dev)"
+    ]
+  }
+}
+
