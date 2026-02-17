@@ -1,0 +1,18 @@
+{
+  "preferences": {
+    "defaultModel": "sonnet",
+    "theme": "dark"
+  },
+  "permissions": {
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.kube/**)",
+      "Read(~/.docker/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.netrc)",
+      "Read(~/.config/gh/**)"
+    ]
+  }
+}
