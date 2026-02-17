@@ -14,14 +14,14 @@
       "Read(./**/credentials*)",
       "Read(~/.ssh/**)",
       "Bash(rm -rf /)",
-      "Bash(git config --global*)"
+      "Bash(git config --global:*)"
     ],
     "ask": [
       "WebFetch",
       "Bash(curl:*)",
       "Bash(wget:*)",
-      "Bash(npm install *)",
-      "Bash(pip install *)",
+      "Bash(npm install:*)",
+      "Bash(pip install:*)",
       "Bash(npm run dev)"
     ]
   }
