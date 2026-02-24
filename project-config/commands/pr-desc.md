@@ -5,6 +5,9 @@
 ## Summary
 一句話說明核心變更。
 
+## Task
+輸出格式: AB#<task id>
+
 ## Changes
 檔案路徑與變更邏輯摘要。
 
@@ -13,3 +16,8 @@
 
 ## Risks
 潛在風險或需要 Reviewer 特別關注的地方。
+
+## Output Restriction - MUST FOLLOW
+- 英文
+- SWE Engineering Convention
+- Markdown syntax for pasting to Github UI.
