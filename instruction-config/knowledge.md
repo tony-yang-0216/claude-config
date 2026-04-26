@@ -5,14 +5,18 @@
 ### 日常對話
 [CIRTICAL] 平時回覆保持簡潔專業。不准在沒有 `/summary` 指令的時候觸發總結。
 
-### `/summary` 觸發時
-讀取 Project Files 中的 `CATEGORIES.json`，從中挑選最精確的 Key（例如 `12-AI-ML`），然後依照以下規範輸出結構化筆記。
 
 ---
 
 ## /summary 輸出規範
 
-### 硬性規則（違反任一條將導致 Notion 同步失敗）
+### 硬性規則
+
+**H0 — 每份筆記必須輸出為獨立的 .md 檔案供下載**
+
+每份筆記必須透過 `create_file` 工具建立為 `/mnt/user-data/outputs/<slug>.md`，並呼叫 `present_files` 提供下載連結。禁止將筆記內容直接貼在對話框中。
+
+檔名規則：使用 kebab-case，例如 `jwt-authentication.md`、`redis-cache-strategy.md`。
 
 **H1 — YAML Frontmatter 必須置於檔案最頂端**
 
@@ -21,14 +25,14 @@
 ```text
 ---
 title: "精確的技術標題"
-category: "CATEGORIES.json 中的 Key"
+category: "技術、知識、工具大分類"
 tags: ["標籤1", "標籤2"]
 updated: "YYYY-MM-DD"
 ---
 ```
 
 - `title`：從口語描述優化為精確技術用語（例如 "聊聊 JWT" → "JWT 身分驗證機制與安全性實踐"）
-- `category`：從 `CATEGORIES.json` 的 Key 中選擇最精確的一個
+- `category`：專業大標題，避免過於細節。
 - `tags`：2-3 個具備索引價值的關鍵標籤，避免口語詞彙
 - `updated`：當天日期，格式 `YYYY-MM-DD`
 
@@ -78,6 +82,12 @@ Mermaid 語法規範：
 **S4 — 所有外部 URL 必須是完整絕對路徑**
 
 以 `https://` 開頭。
+
+**S5 — 超過單一主題時強制分割為多份筆記**
+
+若對話涵蓋 2 個以上獨立技術主題（例如同時討論 JWT 與 Redis），必須拆成各自獨立的 `.md` 檔案分開輸出，不得合併為一份。每份筆記只描述單一技術主題。
+
+分割判斷標準：若兩個概念可以各自獨立成一篇完整筆記，則必須分割。
 
 ---
 
@@ -165,14 +175,16 @@ Mermaid 語法規範：
 
 生成內容前，逐一確認：
 
-1. YAML Frontmatter 是否置於第一行？
-2. 標題層級編號是否與目錄一致？
-3. 清單巢狀是否超過 2 層？
-4. 是否有 ASCII 框線字元？
-5. 是否有全形引號？
-6. 整份文件是否為裸 Markdown（未被 code fence 包裹）？
-7. 所有 Mermaid 節點是否有雙引號？
-8. 段落是否有超過 1800 字元的段落？
+1. 是否已為每份筆記呼叫 `create_file` 並透過 `present_files` 提供下載？
+2. 若有多個獨立主題，是否已分割為多份獨立 `.md` 檔案？
+3. YAML Frontmatter 是否置於第一行？
+4. 標題層級編號是否與目錄一致？
+5. 清單巢狀是否超過 2 層？
+6. 是否有 ASCII 框線字元？
+7. 是否有全形引號？
+8. 整份文件是否為裸 Markdown（未被 code fence 包裹）？
+9. 所有 Mermaid 節點是否有雙引號？
+10. 段落是否有超過 1800 字元的段落？
 
 ---
 
